@@ -1,0 +1,26 @@
+	{
+	  "name": "Contacts CRM",
+          "version": "1.0",
+  "description": "Uses OAuth to connect to Google's People API and display contacts photos.",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_title": "Contacts CRM"
+  },
+  "permissions": [
+    "identity",
+    "https://www.google.com/m8/feeds/"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "oauth2": {
+          "client_id": "188633976099-n8jf41aego0tioorisitbgt98m32g9as.apps.googleusercontent.com",
+          "scopes":[
+	   "https://www.google.com/m8/feeds/"
+	  ]
+          },
+  "key": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiroqwPzWzI6ifo1/G14zBfTiuJodkZsZVllR3KLvd25kaBjMnhpnk8TC9A3rylt8/8HxGsfgTdgReLtA8nOeWgqT4pBxz42anlb7RTNgAFHjc6O3zTy5L/OLKBE22upm8bSNoxtqsSE/sTUyaha602vvWhryaYjOffO2SBqXduF5hTPwidkcntEerds8+QttnQtXw5eWpvt7fubum9G4rAP9QvTitqjNy3D1hAqnKwfilI/ZVM8KP+vS0EPdM+8yFBVKenCfVz2kCyd1eioWDEfD+DmnZdSN7pI0ytSKtBXEzA0YR6PLnEe3GL+m90jm2pb2A5fzxn5ttODusbHriQIDAQAB-----END PUBLIC KEY-----"
+}

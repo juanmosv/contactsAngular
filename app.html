@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--  js -->
+<script src="js/jquery.js"></script>
+<script src="js/moments.js"></script>
+<script src="js/material.js"></script>   
+<script src="js/handler.js"></script>  
+<script type="text/javascript" src="oauth.js"></script>  
+  <!-- END -->
+  <!-- Style The Contact Form -->
+<link rel="stylesheet" href="css/material.css"> 
+<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+ <div id="mainpage">
+  <div class="myOverlay" id="myOverlay-c"></div>
+  <div class="load-bar" id="load-bar-c">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  </div>
+  <div class="loadingMessage" id="loadingMessage-c">Saving, please wait!</div>
+ <!-- START HERE -->
+ <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">
+      <img src="https://lh3.googleusercontent.com/vJuw_0OAOjREz0NLOrXbiOOg3O8saoAWpCH6vHSOh07G3FFpmRksWEpI1sn0vIS2VSsPxDUpu_oeNEjlzIduxDOhxfYyV6GD-_h5eA=h120" alt="" border="0" width="40px" height="">
+   Contacts Dashboard
+   </span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Create Conctacs</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+  </div>
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content">
+      <!-- Your content goes here -->
+      <div class="mdl-grid" id="container">
+    <!-- the script will insert the data here -->
+    </div>
+      </div>
+    </section>
+    <!-- Form handler -->
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content">
+      <!-- Your content goes here -->
+      <form id="cform" class="pure-form-stacked toggle-disabled" onsubmit="handleContactSubmit(this)">
+   <!-- change the form action to your script url -->
+ 
+    <fieldset style="border: 0; font-size:14px !important;">
+           
+            <td><label for="handler"></label>
+            <input name="handler" class="uk-input uk-hidden" type="text" value="addContact">
+            <label for="id"></label>
+            <input name="id" class="uk-input uk-hidden" type="text" value="">
+            <table>   
+            <tr class="inline">
+            <td><label for="Name">Name</label>
+            <input required="required" name="Name" class="uk-form-width-medium" type="text" value="">
+            </td></tr><tr class="inline">
+             <td> <label for="Phone">Phone</label>     
+            <input name="Phone" class="uk-form-width-medium" type="text" value="">
+            </td></tr><tr class="inline">
+            <td>  <label for="Email">Email</label>  
+            <input name="Email" class="uk-form-width-medium" type="email" value="">
+            </td></tr><tr>
+            <td>
+          <label for="Notes">Notes</label>
+          <textarea name="Notes" id="cctextarea" class="uk-textarea" rows="4" placeholder=""></textarea>
+         </td></tr>
+            <tr class="inline">
+            <td> <label for="First Contact">First Contact</label>
+            <input name="First Contact" class="uk-form-width-medium" type="date" value="">
+            </td></tr>
+            <tr class="inline">
+            <td><label for="Last Contact">Last Contact</label>     
+            <input name="Last Contact" class="uk-form-width-medium" type="date" value="">
+            </td></tr><tr>
+            <td><label for="Next Contact">Follow up</label>  
+            <input name="Next Contact" class="uk-form-width-medium" type="date" value="">
+            <label for="Start Time" class="uk-input uk-hidden">Start Time</label>  
+            <input name="Start Time" class="uk-form-width-small" type="time" id="Starttime" value="">
+            <label for="End Time" class="uk-input uk-hidden">End Time</label>  
+            <input name="End Time" class="uk-form-width-small" type="time" id="Endtime">
+            <label for="notification"  style="margin-top: 10px;padding-left: 10px;">
+            <input name="notification" class="uk-checkbox" type="checkbox" value="" style="padding-right: 0px;margin-right: 5px !important;margin-top: -2px;">Notify me?</label>
+       
+         </td> 
+         </tr>
+         <tr>
+         <td>
+          <label for="Lead Type">Lead Type</label>
+            <select required="required" name="Lead Type" id="leadtype">
+             <option>Call</option>
+             <option>Cold Call</option>
+             <option>Walk-in</option>
+             <option>Internet</option>
+            </select> 
+         </td></tr>
+         <tr class="inline">
+            <td> <label for="Address">Address</label>
+            <input name="Address" class="uk-form-width-large" type="text" value="">
+            </td></tr>
+            <tr class="inline">
+            <td> <label for="Birthday">Birthday</label>
+            <input name="Birthday" class="uk-form-width-medium" type="date" value="">
+            </td></tr>
+            
+        
+       <tr><td><button type="submit" class="uk-button pure-button" style="height:30px; width: 85px; margin:2px;">Submit</button></td></tr>
+      
+         </table>
+        
+    </fieldset>
+       
+  </form> 
+      </div>
+    </section>
+  </main>
+</div>
+</div>
+</body>
+</html>
