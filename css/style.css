@@ -1,32 +1,32 @@
-.cardpadding {
- padding: 10px;
+aside {
+    background: #1f8dd6; /* same color as selected state on site menu */
+    padding: 0.3em 1em;
+    border-radius: 3px;
+    color: #fff !important;
+    margin: 1em 0 2em 0;
+    font-size: 150%;
+}
+.mainContainer{
+margin:1em 5% 0 5%;
+
 }
 
+.header{
+position: fixed;
+width:100%;
+}
 textarea {
   width: 100%;
-  resize: none;
 }
-
-
-#cform input {
-     height: 25px !important;
-     margin-right: 15px !important;
-}
-
-.inline{
- display:inline-block !important;
-}
-
-.buttonborder{
-float:right; width:18%; margin-top: -35px;
+.content-head {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
 }
 .content-tl {
-  display:inline-block;
-  font-weight: bolder;
-  font-size: 20px;
-  margin: 0.2em 2em 0em;
+  margin: 1em 0 1em;
 }
-
 .is-center {
   text-align: center;
 }
