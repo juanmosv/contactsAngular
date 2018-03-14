@@ -20,124 +20,172 @@
 <link rel="stylesheet" href="css/style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<base target="_top">
+  </head>
+  <body>
+  <div ng-controller="mainCtrl" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="MyApp" flex layout-fill>
+  
+    <md-toolbar md-scroll-shrink="" class="header">
+    <div class="md-toolbar-tools" layout-xs="column">
+    <img src="https://lh3.googleusercontent.com/vJuw_0OAOjREz0NLOrXbiOOg3O8saoAWpCH6vHSOh07G3FFpmRksWEpI1sn0vIS2VSsPxDUpu_oeNEjlzIduxDOhxfYyV6GD-_h5eA=h120" width="40px" height="" style="display:block">
+     <div class="content-tl" flex>Contacts CRM</div>
+     <div style="text-align: right;" flex>Create a new contact</div>
+  </div>
+  </md-toolbar>
+  <md-content layout-gt-sm="column" layout-padding="">
+    <div>
 
-<body>
- <div id="mainpage">
-  <div class="myOverlay" id="myOverlay-c"></div>
-  <div class="load-bar" id="load-bar-c">
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  </div>
-  <div class="loadingMessage" id="loadingMessage-c">Saving, please wait!</div>
- <!-- START HERE -->
- <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">
-      <img src="https://lh3.googleusercontent.com/vJuw_0OAOjREz0NLOrXbiOOg3O8saoAWpCH6vHSOh07G3FFpmRksWEpI1sn0vIS2VSsPxDUpu_oeNEjlzIduxDOhxfYyV6GD-_h5eA=h120" alt="" border="0" width="40px" height="">
-   Contacts Dashboard
-   </span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="">Create Conctacs</a>
-      </nav>
     </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Title</span>
-  </div>
-  <main class="mdl-layout__content">
-    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
-      <div class="page-content">
-      <!-- Your content goes here -->
-      <div class="mdl-grid" id="container">
-    <!-- the script will insert the data here -->
-    </div>
-      </div>
-    </section>
-    <!-- Form handler -->
-    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
-      <div class="page-content">
-      <!-- Your content goes here -->
-      <form id="cform" class="pure-form-stacked toggle-disabled" onsubmit="handleContactSubmit(this)">
-   <!-- change the form action to your script url -->
- 
-    <fieldset style="border: 0; font-size:14px !important;">
+  </md-content>
+
+  <md-content layout-padding="">
+  
+    <div class="mainContainer" ng-model="data.content">
+   <!-- Contacts List -->
+   <div ng-repeat="user in data">
+   <form id="form" onsubmit="handleFormSubmit(this)">    
+     <md-card>
+     <md-card-content>
+     <label for="id"></label>
+            <input name="id" style="display:none;" type="text" value="">
+            <label for="handler"></label>
+            <input name="handler" style="display:none;" type="text" value="updateContact">
+
+            <div layout-gt-sm="row">
+   
+            <md-input-container class="md-block">
+            <label>Lead Type</label>
+            <md-select ng-model="selectedLead" ng-model-options="{trackBy: '$value.id'}" ng-if="user[10] == Call">
+            <md-option ng-value="lead" ng-repeat="lead in leads">{{ lead.type }}</md-option>
+            </md-select>
+          </md-input-container>
+   
+          
+          <md-input-container class="md-block">
+            <label>First Contact</label>
+            <md-datepicker ng-model="user[7]"  disabled></md-datepicker>
+          </md-input-container>
+
+          <md-input-container class="md-block" >
+            <label>Last Contact</label>
+            <md-datepicker ng-model="user[8]"  disabled></md-datepicker>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Next Contact</label>
+            <md-datepicker ng-model="user[9]" ></md-datepicker>
+          </md-input-container>
+        </div>
+        
+           <div layout-gt-sm="row">
+          <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+      <label>Name</label>
+      <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="user[0]" type="text"  ng-required="true">
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+      <input ng-model="user[2]" type="text" placeholder="Phone Number">
+    </md-input-container>
+
+         <md-input-container class="md-block">
+      <!-- Use floating placeholder instead of label -->
+      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+      <input ng-model="user[1]" type="email" placeholder="Email">
+    </md-input-container>
+        </div>  
            
-            <td><label for="handler"></label>
-            <input name="handler" class="uk-input uk-hidden" type="text" value="addContact">
-            <label for="id"></label>
-            <input name="id" class="uk-input uk-hidden" type="text" value="">
-            <table>   
-            <tr class="inline">
-            <td><label for="Name">Name</label>
-            <input required="required" name="Name" class="uk-form-width-medium" type="text" value="">
-            </td></tr><tr class="inline">
-             <td> <label for="Phone">Phone</label>     
-            <input name="Phone" class="uk-form-width-medium" type="text" value="">
-            </td></tr><tr class="inline">
-            <td>  <label for="Email">Email</label>  
-            <input name="Email" class="uk-form-width-medium" type="email" value="">
-            </td></tr><tr>
-            <td>
-          <label for="Notes">Notes</label>
-          <textarea name="Notes" id="cctextarea" class="uk-textarea" rows="4" placeholder=""></textarea>
-         </td></tr>
-            <tr class="inline">
-            <td> <label for="First Contact">First Contact</label>
-            <input name="First Contact" class="uk-form-width-medium" type="date" value="">
-            </td></tr>
-            <tr class="inline">
-            <td><label for="Last Contact">Last Contact</label>     
-            <input name="Last Contact" class="uk-form-width-medium" type="date" value="">
-            </td></tr><tr>
-            <td><label for="Next Contact">Follow up</label>  
-            <input name="Next Contact" class="uk-form-width-medium" type="date" value="">
-            <label for="Start Time" class="uk-input uk-hidden">Start Time</label>  
-            <input name="Start Time" class="uk-form-width-small" type="time" id="Starttime" value="">
-            <label for="End Time" class="uk-input uk-hidden">End Time</label>  
-            <input name="End Time" class="uk-form-width-small" type="time" id="Endtime">
-            <label for="notification"  style="margin-top: 10px;padding-left: 10px;">
-            <input name="notification" class="uk-checkbox" type="checkbox" value="" style="padding-right: 0px;margin-right: 5px !important;margin-top: -2px;">Notify me?</label>
+       <md-input-container class="md-block">
+          <label>Notes</label>
+          <textarea ng-model="user[4]" rows="3" md-select-on-focus></textarea>
+        </md-input-container>
        
-         </td> 
-         </tr>
-         <tr>
-         <td>
-          <label for="Lead Type">Lead Type</label>
-            <select required="required" name="Lead Type" id="leadtype">
-             <option>Call</option>
-             <option>Cold Call</option>
-             <option>Walk-in</option>
-             <option>Internet</option>
-            </select> 
-         </td></tr>
-         <tr class="inline">
-            <td> <label for="Address">Address</label>
-            <input name="Address" class="uk-form-width-large" type="text" value="">
-            </td></tr>
-            <tr class="inline">
-            <td> <label for="Birthday">Birthday</label>
-            <input name="Birthday" class="uk-form-width-medium" type="date" value="">
-            </td></tr>
-            
-        
-       <tr><td><button type="submit" class="uk-button pure-button" style="height:30px; width: 85px; margin:2px;">Submit</button></td></tr>
-      
-         </table>
-        
-    </fieldset>
-       
-  </form> 
+ 
+ 
+ 
+ </md-card-content>
+</md-card>
+ </form>
+</div>
+    
+    <!-- Contacts form -->
+ <div style="display:none">
+      <form name="userForm">
+
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-xs="">
+            <label>Company (Disabled)</label>
+            <input ng-model="user.company" disabled="">
+          </md-input-container>
+
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>First name</label>
+            <input ng-model="user.firstName">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End</label>
+            <input ng-model="theMax">
+          </md-input-container>
+        </div>
+
+        <md-input-container class="md-block">
+          <label>Address</label>
+          <input ng-model="user.address">
+        </md-input-container>
+
+        <md-input-container md-no-float="" class="md-block">
+          <input ng-model="user.address2" placeholder="Address 2">
+        </md-input-container>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>City</label>
+            <input ng-model="user.city">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>State</label>
+            <md-select ng-model="user.state">
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Postal Code</label>
+            <input name="postalCode" ng-model="user.postalCode" placeholder="12345" required="" ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+            <div ng-messages="userForm.postalCode.$error" role="alert" multiple="">
+              <div ng-message="required" class="my-message">You must supply a postal code.</div>
+              <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                code.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Don't use the long version silly...we don't need to be that specific...
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <md-input-container class="md-block">
+          <label>Biography</label>
+          <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
+        </md-input-container>
+
+
+      </form>
       </div>
-    </section>
-  </main>
+    </div>
+    
+  </md-content>
 </div>
-</div>
-</body>
+
+  </body>
 </html>
